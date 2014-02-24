@@ -13,7 +13,7 @@
         width: 100%;
         font-family: sans-serif;
       }
-      #chatlog textarea{
+      #chatlog div{
         width: 480px;
         margin: 0px;
         padding: 0px;
@@ -34,7 +34,7 @@
   <body>
     <div id='chatclient' ng-controller='ChatClient'>
       <div id='chatHanleDiv'><label for='chatHandle'>Your Name:</label><input id='chatHandle' type='text' ng-model='chatHandle' /></div>
-      <div id='chatlog'><textarea ng-model='chatLog'></textarea></div>
+      <div id='chatlog'><div ng-model='chatLog'></div></div>
       <div id='chatinput'>
         <form>
           <input type='text' ng-model='chatMsg' />
