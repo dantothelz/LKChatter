@@ -1,0 +1,22 @@
+{
+  "name": "lkchat",
+  "version": "0.0.1",
+  "homepage": "https://github.com/dantothelz/LKChatter",
+  "authors": [
+    "Dan DuLeone <dantothelz@gmail.com>"
+  ],
+  "description": "websocket based chat",
+  "main": "index.php",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2.13"
+  }
+}
