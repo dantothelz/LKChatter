@@ -15,7 +15,7 @@ app.controller('ChatClient', function ($scope, storage) {
     if ( (typeof apply != 'undefiled') && (apply == 'true') ) {
       $scope.$apply();
     }
-    var chatLog = document.getElementById("chatLog").getElementsByTagName('div')[0];
+    var chatLog = document.getElementById("chatlog").getElementsByTagName('div')[0];
     chatLog.scrollTop = chatLog.scrollHeight;
   }
 
