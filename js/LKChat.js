@@ -41,7 +41,7 @@ app.controller('ChatClient', function ($scope, storage) {
     },
     onclose: function(e) {
       console.log("Connection lost!");
-      conn = new WebSocket('ws://www.duleone.com:8080');
+      conn = new WebSocket('ws://www.duleone.com:1080');
       conn.onopen = this.onopen;
       conn.onmessage = this.onmessage;
       conn.onclose = this.onclose;
