@@ -20,8 +20,8 @@
         height: 410px;
       }
       #chatlog div{
-        width: 100%;
-        height: 100%;
+        width: 480px;
+        height: 400px;
         margin: 0px;
         padding: 5px;
         font-family: monospace;
