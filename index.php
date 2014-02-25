@@ -40,7 +40,7 @@
   <body>
     <div id='chatclient' ng-controller='ChatClient'>
       <div id='chatHanleDiv'><label for='chatHandle'>Your Name:</label><input id='chatHandle' type='text' ng-model='chatHandle' /></div>
-      <div id='chatlog'><div ng-model='chatLog'></div></div>
+      <div id='chatlog'><div ng-model='chatLog'>{{chatLog}}</div></div>
       <div id='chatinput'>
         <form>
           <input type='text' ng-model='chatMsg' />
