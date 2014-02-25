@@ -13,11 +13,17 @@
         width: 100%;
         font-family: sans-serif;
       }
-      #chatlog div{
+      #chatlog{
         width: 480px;
         margin: 0px;
         padding: 0px;
         height: 400px;
+      }
+      #chatlog div{
+        width: 100%;
+        height: 100%;
+        margin: 0px;
+        padding: 5px;
       }
       #chatinput input{
         width: 400px;
