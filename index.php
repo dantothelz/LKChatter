@@ -26,7 +26,7 @@
         padding: 5px;
         font-family: monospace;
         border: 1px solid black;
-        word-wrap: normal;
+        white-space: pre;
         overflow-x: none;
         overflow-y: auto;
       }
