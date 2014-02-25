@@ -8,10 +8,10 @@ Number.prototype.pad = function (len) {
 
 app.controller('ChatClient', function ($scope, storage) {
   var t = new Date();
-  $scope.chatLog = "[" + t.getHours().pad(2) + ":" + t.getMinutes().pad(2) + "] Now entering chatroom...<br \>\n";
+  $scope.chatLog = "[" + t.getHours().pad(2) + ":" + t.getMinutes().pad(2) + "] Now entering chatroom...<br \\>\n";
 
   $scope.appendMessage = function (msg, apply) {
-    $scope.chatLog += "[" + msg.time + "] <" + msg.nick + "> " + msg.text + "<br \>\n";
+    $scope.chatLog += "[" + msg.time + "] <" + msg.nick + "> " + msg.text + "<br \\>\n";
     if ( (typeof apply != 'undefiled') && (apply == 'true') ) {
       $scope.$apply();
     }
