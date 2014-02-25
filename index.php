@@ -23,7 +23,7 @@
         width: 480px;
         height: 410px;
         margin: 0px;
-        padding: 0px 5px;
+        padding: 2px 5px;
         font-family: monospace;
         border: 1px solid black;
         white-space: pre;

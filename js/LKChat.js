@@ -18,6 +18,7 @@ app.controller('ChatClient', function ($scope, storage) {
   $scope.appendMessage = function (msg, apply) {
     $scope.chatLog += "[" + msg.time + "] <" + msg.nick + "> " + msg.text + "\n";
     if ( (typeof apply != 'undefiled') && (apply == 'true') ) {
+      scrollChat();
       $scope.$apply();
     }
   }
@@ -37,7 +38,6 @@ app.controller('ChatClient', function ($scope, storage) {
       try {
         var msg = JSON.parse(text);
         $scope.appendMessage(msg, 'true');
-        scrollChat();
       } catch (err) {
         console.log("Invalid message received! " + text);
         console.log("Error! " + err);
@@ -86,7 +86,6 @@ app.controller('ChatClient', function ($scope, storage) {
     console.log('send message: ' + $scope.chatMsg);
     $scope.chatMsg = "";
     $scope.appendMessage(msg);
-    scrollChat();
     conn.send(JSON.stringify(msg));
   }
 });
