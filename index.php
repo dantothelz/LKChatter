@@ -14,10 +14,10 @@
         font-family: sans-serif;
       }
       #chatlog{
-        width: 480px;
+        width: 490px;
         margin: 0px;
         padding: 0px;
-        height: 400px;
+        height: 410px;
       }
       #chatlog div{
         width: 100%;
