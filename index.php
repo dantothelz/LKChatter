@@ -24,6 +24,8 @@
         height: 100%;
         margin: 0px;
         padding: 5px;
+        font-family: monospace;
+        border: 1px solid black;
       }
       #chatinput input{
         width: 400px;
