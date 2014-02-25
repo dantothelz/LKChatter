@@ -8,7 +8,7 @@ Number.prototype.pad = function (len) {
 
 function scrollChat(){
     var chatLog = document.getElementById("chatlog").getElementsByTagName('div')[0];
-    chatLog.scrollTop = chatLog.scrollHeight;
+    chatLog.scrollTop = chatLog.scrollHeight + 10;
   }
 
 app.controller('ChatClient', function ($scope, storage) {
