@@ -26,7 +26,9 @@
         padding: 5px;
         font-family: monospace;
         border: 1px solid black;
-        overflow: auto;
+        word-wrap: break-word;
+        overflow-x: none;
+        overflow-y: auto;
       }
       #chatinput input{
         width: 400px;
