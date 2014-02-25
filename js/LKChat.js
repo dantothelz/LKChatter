@@ -17,8 +17,8 @@ app.controller('ChatClient', function ($scope, storage) {
 
   $scope.appendMessage = function (msg, apply) {
     $scope.chatLog += "[" + msg.time + "] <" + msg.nick + "> " + msg.text + "\n";
+    scrollChat();
     if ( (typeof apply != 'undefiled') && (apply == 'true') ) {
-      scrollChat();
       $scope.$apply();
     }
   }
