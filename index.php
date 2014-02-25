@@ -27,6 +27,7 @@
         font-family: monospace;
         border: 1px solid black;
         white-space: pre;
+        word-wrap: break-word;
         overflow-x: none;
         overflow-y: auto;
       }
