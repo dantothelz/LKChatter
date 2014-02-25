@@ -6,6 +6,11 @@ Number.prototype.pad = function (len) {
     return (new Array(len+1).join("0") + this).slice(-len);
 }
 
+function scrollChat(){
+    var chatLog = document.getElementById("chatlog").getElementsByTagName('div')[0];
+    chatLog.scrollTop = chatLog.scrollHeight;
+  }
+
 app.controller('ChatClient', function ($scope, storage) {
   var t = new Date();
   $scope.chatLog = "[" + t.getHours().pad(2) + ":" + t.getMinutes().pad(2) + "] Now entering chatroom...\n";
@@ -15,8 +20,6 @@ app.controller('ChatClient', function ($scope, storage) {
     if ( (typeof apply != 'undefiled') && (apply == 'true') ) {
       $scope.$apply();
     }
-    var chatLog = document.getElementById("chatlog").getElementsByTagName('div')[0];
-    chatLog.scrollTop = chatLog.scrollHeight;
   }
 
   storage.bind($scope, 'chatHandle');
@@ -34,6 +37,7 @@ app.controller('ChatClient', function ($scope, storage) {
       try {
         var msg = JSON.parse(text);
         $scope.appendMessage(msg, 'true');
+        scrollChat();
       } catch (err) {
         console.log("Invalid message received! " + text);
         console.log("Error! " + err);
@@ -82,6 +86,7 @@ app.controller('ChatClient', function ($scope, storage) {
     console.log('send message: ' + $scope.chatMsg);
     $scope.chatMsg = "";
     $scope.appendMessage(msg);
+    scrollChat();
     conn.send(JSON.stringify(msg));
   }
 });
