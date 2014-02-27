@@ -59,15 +59,18 @@ app.controller('ChatClient', function ($scope, storage) {
     }
   };
 
-  console.log('1');
-  if (conn.readyState == 1) {  
-    console.log('2');
-    conn.onopen = connHandler.onopen;
-    conn.onmessage = connHandler.onmessage;
-    conn.onclose = connHandler.onclose;
-    console.log('3');
-  }
-  console.log('4');
+  setInterval(function () {
+    console.log('1');
+    if (conn.readyState == 1) {
+      console.log('2');
+      conn.onopen = connHandler.onopen;
+      conn.onmessage = connHandler.onmessage;
+      conn.onclose = connHandler.onclose;
+      console.log('3');
+    }
+    console.log('4');    
+  }, 1000);
+
 
   var MsgPacket = function () {
     var t = new Date();
