@@ -50,6 +50,7 @@ app.controller('ChatClient', function ($scope, storage) {
     },
     onclose: function(e) {
       console.log("Connection lost!");
+      var t = new Date();
       $scope.chatLog += "[" + t.getHours().pad(2) + ":" + t.getMinutes().pad(2) + "] Disconnected from chat server...\n";
       conn = new WebSocket(SERVER.getURI());
       $scope.chatLog += "[" + t.getHours().pad(2) + ":" + t.getMinutes().pad(2) + "] Reconnecting to chat server...\n";
@@ -73,6 +74,7 @@ app.controller('ChatClient', function ($scope, storage) {
   var conn_check = setInterval(
     function (log) {
       if (conn.readyState == 1) {
+        var t = new Date();
         conn.onopen = connHandler.onopen;
         conn.onmessage = connHandler.onmessage;
         conn.onclose = connHandler.onclose;
