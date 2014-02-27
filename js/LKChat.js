@@ -25,7 +25,7 @@ app.controller('ChatClient', function ($scope, storage) {
       $scope.$apply();
     }
     
-  }
+  };
 
   storage.bind($scope, 'chatHandle');
 
@@ -37,6 +37,7 @@ app.controller('ChatClient', function ($scope, storage) {
     }, 
     onmessage: function(e) {
       text = e.data;
+      console.log('INCOMING!');
       console.log(text);
       try {
         var msg = JSON.parse(text);
