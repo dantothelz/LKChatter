@@ -1,5 +1,14 @@
 app = angular.module("LKChat", ['angularLocalStorage']);
 
+var SERVER = {
+  address: "www.duleone.com",
+  port: "110",
+  getURI: function () {
+    return "ws://" + this.address + ":" + this.port;
+  }
+}
+
+
 //http://stackoverflow.com/questions/3313875/javascript-date-ensure-getminutes-gethours-getseconds-puts-0-in-front-i
 function pad(n) { return ("0" + n).slice(-2); }
 Number.prototype.pad = function (len) {
@@ -20,8 +29,7 @@ app.controller('ChatClient', function ($scope, storage) {
 
   storage.bind($scope, 'chatHandle');
 
-  var conn = new WebSocket('ws://www.duleone.com:8888');
-
+  var conn = new WebSocket(SERVER.getURI());
 
   var connHandler = {
     onopen: function(e) {
@@ -41,29 +49,21 @@ app.controller('ChatClient', function ($scope, storage) {
     },
     onclose: function(e) {
       console.log("Connection lost!");
-      conn = new WebSocket('ws://www.duleone.com:8888');
-      conn.onopen = this.onopen;
-      conn.onmessage = this.onmessage;
-      conn.onclose = this.onclose;
+      conn = new WebSocket(SERVER.getURI());
+      if (conn.readyState == 1) {
+        conn.onopen = this.onopen;
+        conn.onmessage = this.onmessage;
+        conn.onclose = this.onclose;
+      }
     }
   };
 
 
-
-
-  
-  conn.onopen = function(e) {
-    connHandler.onopen(e);
-  };
-
-  conn.onmessage = function(e) {
-    connHandler.onmessage(e);
-  };
-
-  conn.onclose = function(e) {
-    connHandler.onclose(e);
+  if (conn.readyState == 1) {  
+    conn.onopen = connHandler.onopen;
+    conn.onmessage = connHandler.onmessage;
+    conn.onclose = connHandler.onclose;
   }
-
 
   var MsgPacket = function () {
     var t = new Date();
@@ -84,3 +84,6 @@ app.controller('ChatClient', function ($scope, storage) {
     conn.send(JSON.stringify(msg));
   }
 });
+
+
+///app.directive('ChatBuffer', function ($scope) {
