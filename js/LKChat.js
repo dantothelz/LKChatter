@@ -58,7 +58,7 @@ app.controller('ChatClient', function ($scope, storage) {
       $scope.$apply();
       var conn_check = setInterval(
         function () {
-          console.log("Attempting to connect...");
+          console.log("Attempting to reconnect...");
           if (conn.readyState == 1) {
             conn.onopen = this.onopen;
             conn.onmessage = this.onmessage;
