@@ -59,8 +59,8 @@ app.controller('ChatClient', function ($scope, storage) {
             conn.onopen = this.onopen;
             conn.onmessage = this.onmessage;
             conn.onclose = this.onclose;
-            clearInterval(conn_check);
             $scope.chatLog = "[" + t.getHours().pad(2) + ":" + t.getMinutes().pad(2) + "] Now entering chatroom...\n";
+            clearInterval(conn_check);
           }
         },
         1000
@@ -74,8 +74,8 @@ app.controller('ChatClient', function ($scope, storage) {
         conn.onopen = connHandler.onopen;
         conn.onmessage = connHandler.onmessage;
         conn.onclose = connHandler.onclose;
-        clearInterval(conn_check);
         $scope.chatLog = "[" + t.getHours().pad(2) + ":" + t.getMinutes().pad(2) + "] Now entering chatroom...\n";
+        clearInterval(conn_check);
       }
     },
     1000
