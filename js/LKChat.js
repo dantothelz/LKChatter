@@ -1,12 +1,12 @@
 app = angular.module("LKChat", ['angularLocalStorage']);
 
 var SERVER = {
-  address: "www.duleone.com",
-  port: "8080",
+  _address: "www.duleone.com",
+  _port: "8000",
   getURI: function () {
-    return "ws://" + this.address + ":" + this.port;
+    return "ws://" + this._address + ":" + this._port;
   }
-}
+};
 
 
 //http://stackoverflow.com/questions/3313875/javascript-date-ensure-getminutes-gethours-getseconds-puts-0-in-front-i
