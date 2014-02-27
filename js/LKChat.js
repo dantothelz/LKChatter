@@ -58,16 +58,16 @@ app.controller('ChatClient', function ($scope, storage) {
       $scope.$apply();
       var conn_check = setInterval(
         function () {
+          console.log("Attempting to connect...");
           if (conn.readyState == 1) {
             conn.onopen = this.onopen;
             conn.onmessage = this.onmessage;
             conn.onclose = this.onclose;
-            $scope.chatLog += "[" + t.getHours().pad(2) + ":" + t.getMinutes().pad(2) + "] Now entering chatroom...\n";
+            $scope.chatLog += "[" + t.getHours().pad(2) + ":" + t.getMinutes().pad(2) + "] Now entering chatroom!\n";
             $scope.$apply();
             console.log("Connection established.");
             clearInterval(conn_check);
           }
-          console.log("abc");
         },
         1000
       );
@@ -76,23 +76,17 @@ app.controller('ChatClient', function ($scope, storage) {
 
   var conn_check = setInterval(
     function () {
+      console.log("Attempting to connect...");
       if (conn.readyState == 1) {
-        console.log("Connection established. " + '1');
         var t = new Date();
-        console.log("Connection established. " + '2');
         conn.onopen = connHandler.onopen;
-        console.log("Connection established. " + '3');
         conn.onmessage = connHandler.onmessage;
-        console.log("Connection established. " + '4');
         conn.onclose = connHandler.onclose;
-        console.log("Connection established. " + '5');
-        $scope.chatLog += "[" + t.getHours().pad(2) + ":" + t.getMinutes().pad(2) + "] Now entering chatroom...\n";
+        $scope.chatLog += "[" + t.getHours().pad(2) + ":" + t.getMinutes().pad(2) + "] Now entering chatroom!\n";
         $scope.$apply();
-        console.log("Connection established. " + '6');        
+        console.log("Connection established.");
         clearInterval(conn_check);
-        console.log("Connection established. " + '7');
       }
-      console.log("xyz");
     },
     1000
   );
