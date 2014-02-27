@@ -17,7 +17,7 @@ Number.prototype.pad = function (len) {
 
 app.controller('ChatClient', function ($scope, storage) {
   var t = new Date();
-  $scope.chatLog = "[" + t.getHours().pad(2) + ":" + t.getMinutes().pad(2) + "] Now entering chatroom...\n";
+  $scope.chatLog = "[" + t.getHours().pad(2) + ":" + t.getMinutes().pad(2) + "] Connecting to chat server...\n";
 
   $scope.appendMessage = function (msg, apply) {
     $scope.chatLog += "[" + msg.time + "] <" + msg.nick + "> " + msg.text + "\n";
@@ -50,27 +50,36 @@ app.controller('ChatClient', function ($scope, storage) {
     },
     onclose: function(e) {
       console.log("Connection lost!");
+      $scope.chatLog = "[" + t.getHours().pad(2) + ":" + t.getMinutes().pad(2) + "] Disconnected from chat server...\n";
       conn = new WebSocket(SERVER.getURI());
-      if (conn.readyState == 1) {
-        conn.onopen = this.onopen;
-        conn.onmessage = this.onmessage;
-        conn.onclose = this.onclose;
-      }
+      $scope.chatLog = "[" + t.getHours().pad(2) + ":" + t.getMinutes().pad(2) + "] Reconnecting to chat server...\n";
+      var conn_check = setInterval(
+        function () {
+          if (conn.readyState == 1) {
+            conn.onopen = this.onopen;
+            conn.onmessage = this.onmessage;
+            conn.onclose = this.onclose;
+            clearInterval(conn_check);
+            $scope.chatLog = "[" + t.getHours().pad(2) + ":" + t.getMinutes().pad(2) + "] Now entering chatroom...\n";
+          }
+        },
+        1000
+      );
     }
   };
 
-  var conn_check = setInterval(function () {
-    console.log('1');
-    if (conn.readyState == 1) {
-      console.log('2');
-      conn.onopen = connHandler.onopen;
-      conn.onmessage = connHandler.onmessage;
-      conn.onclose = connHandler.onclose;
-      console.log('3');
-      clearInterval(conn_check);
-    }
-    console.log('4');    
-  }, 1000);
+  var conn_check = setInterval(
+    function () {
+      if (conn.readyState == 1) {
+        conn.onopen = connHandler.onopen;
+        conn.onmessage = connHandler.onmessage;
+        conn.onclose = connHandler.onclose;
+        clearInterval(conn_check);
+        $scope.chatLog = "[" + t.getHours().pad(2) + ":" + t.getMinutes().pad(2) + "] Now entering chatroom...\n";
+      }
+    },
+    1000
+  );
 
 
   var MsgPacket = function () {
