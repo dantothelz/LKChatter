@@ -59,7 +59,7 @@ app.controller('ChatClient', function ($scope, storage) {
     }
   };
 
-  setInterval(function () {
+  var conn_check = setInterval(function () {
     console.log('1');
     if (conn.readyState == 1) {
       console.log('2');
@@ -67,6 +67,7 @@ app.controller('ChatClient', function ($scope, storage) {
       conn.onmessage = connHandler.onmessage;
       conn.onclose = connHandler.onclose;
       console.log('3');
+      clearInterval(conn_check);
     }
     console.log('4');    
   }, 1000);
