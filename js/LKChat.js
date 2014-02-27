@@ -2,7 +2,7 @@ app = angular.module("LKChat", ['angularLocalStorage']);
 
 var SERVER = {
   address: "www.duleone.com",
-  port: "23",
+  port: "8080",
   getURI: function () {
     return "ws://" + this.address + ":" + this.port;
   }

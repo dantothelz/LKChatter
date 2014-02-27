@@ -7,7 +7,7 @@ use MyApp\Chat;
 
 require dirname(__DIR__) . '/vendor/autoload.php';
 
-$port = 23;
+$port = 8080;
 
 $chatServer = new Chat();
 $wsServer = new WsServer($chatServer);
