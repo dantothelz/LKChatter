@@ -17,7 +17,7 @@ Number.prototype.pad = function (len) {
 
 app.controller('ChatClient', function ($scope, storage) {
   var t = new Date();
-  $scope.chatLog += "[" + t.getHours().pad(2) + ":" + t.getMinutes().pad(2) + "] Connecting to chat server...\n";
+  $scope.chatLog = "[" + t.getHours().pad(2) + ":" + t.getMinutes().pad(2) + "] Connecting to chat server...\n";
 
   $scope.appendMessage = function (msg, apply) {
     $scope.chatLog += "[" + msg.time + "] <" + msg.nick + "> " + msg.text + "\n";
@@ -74,7 +74,7 @@ app.controller('ChatClient', function ($scope, storage) {
         conn.onopen = connHandler.onopen;
         conn.onmessage = connHandler.onmessage;
         conn.onclose = connHandler.onclose;
-        $scope.chatLog = "[" + t.getHours().pad(2) + ":" + t.getMinutes().pad(2) + "] Now entering chatroom...\n";
+        $scope.chatLog += "[" + t.getHours().pad(2) + ":" + t.getMinutes().pad(2) + "] Now entering chatroom...\n";
         clearInterval(conn_check);
       }
     },
