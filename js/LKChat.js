@@ -72,7 +72,7 @@ app.controller('ChatClient', function ($scope, storage) {
   };
 
   var conn_check = setInterval(
-    function (log) {
+    function () {
       if (conn.readyState == 1) {
         console.log("Connection established. " + '1');
         var t = new Date();
@@ -83,13 +83,13 @@ app.controller('ChatClient', function ($scope, storage) {
         console.log("Connection established. " + '4');
         conn.onclose = connHandler.onclose;
         console.log("Connection established. " + '5');
-        log += "[" + t.getHours().pad(2) + ":" + t.getMinutes().pad(2) + "] Now entering chatroom...\n";
+        $scope.chatLog += "[" + t.getHours().pad(2) + ":" + t.getMinutes().pad(2) + "] Now entering chatroom...\n";
         console.log("Connection established. " + '6');        
         clearInterval(conn_check);
         console.log("Connection established. " + '7');
       }
       console.log("xyz");
-    }($scope.chatLog),
+    },
     1000
   );
 
