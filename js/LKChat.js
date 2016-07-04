@@ -1,10 +1,11 @@
 app = angular.module("LKChat", ['angularLocalStorage']);
 
 var SERVER = {
-  _address: "www.duleone.com",
-  _port: "8000",
+  _address: "www.duleone.com/pridesocket",
+  // _port: "443",
   getURI: function () {
-    return "ws://" + this._address + ":" + this._port;
+    // return "wss://" + this._address + ":" + this._port;
+    return "wss://" + this._address;
   }
 };
 
@@ -24,7 +25,7 @@ app.controller('ChatClient', function ($scope, storage) {
     if ( (typeof apply != 'undefiled') && (apply == 'true') ) {
       $scope.$apply();
     }
-    
+
   };
 
   storage.bind($scope, 'chatHandle');
@@ -34,7 +35,7 @@ app.controller('ChatClient', function ($scope, storage) {
   var connHandler = {
     onopen: function(e) {
       console.log("Connection established!");
-    }, 
+    },
     onmessage: function(e) {
       text = e.data;
       console.log('INCOMING!');
